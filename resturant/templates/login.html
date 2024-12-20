@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;  /* Black background for the page */
+            color: white;  /* White text for better contrast */
+        }
+
+        .container {
+            display: flex;
+            width: 70%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .left {
+            flex: 1;
+            background-image: url('https://www.qsrmagazine.com/wp-content/uploads/2022/12/McDonaldsOTG.jpg'); /* Replace with your image path */
+            background-size: cover;  /* Ensure the image covers the entire area */
+            background-position: center; /* Center the image */
+            border-radius: 8px 0 0 8px;
+        }
+
+        .right {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #333;  /* Dark background for the form */
+            color: white;
+        }
+
+        /* Company Header */
+        .header {
+            background-color: orange;  /* Black background for the header */
+            color: white;  /* White text for the header */
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .company-name {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-field {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-field input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .signup-link {
+            display: block; /* Makes the link a block-level element so it can be centered */
+            text-align: center; /* Centers the link text */
+            color: white; /* Sets the text color to white */
+            font-size: 16px; /* Optional: Adjust font size */
+            margin: 20px 0; /* Optional: Adds some space above and below the link */
+            text-decoration: none; /* Removes underline */
+        }
+        
+        .signup-link:hover {
+            text-decoration: underline; /* Optional: Adds underline on hover */
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .terms input {
+            margin-right: 10px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #FFA500;
+            text-align: center;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .forgot-password a {
+            color: #FFA500;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #FFA500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Company Header -->
+    <div class="header">
+       TULSIPURCAFE
+    </div>
+
+    <div class="container">
+        <!-- Left Section: Image -->
+        <div class="left"></div>
+
+        <!-- Right Section: Sign-Up Form -->
+        <div class="right">
+            <div class="company-name">TULSIPURCAFE</div>
+            <h2>Welcome Back</h2>
+            <form action="#" method="POST">
+                {% csrf_token %}
+                
+
+                <div class="input-field">
+                    <label for="username">Username</label>
+                    <input type="username" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+               
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I accept all the terms and conditions</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Login</button>
+                <a href="{% url 'signup' %}" class="signup-link">Create new account</a>
+            </form>
+
+            <!-- Forgot Password Link -->
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
