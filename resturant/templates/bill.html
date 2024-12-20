@@ -1,0 +1,39 @@
+<!-- bill.html -->
+ {% extends 'base.html'%}
+ {% block content%}
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill for {{ food_item.name }}</title>
+</head>
+<body>
+    
+    <img src="{{ food_item.image.url }}" alt="{{ food_item.name }}" style="width: 40%;">
+    <h1>Bill for {{ food_item.name }}</h1>
+    <p><strong>Description:</strong> {{ food_item.description }}</p>
+    <p><strong>Price:</strong> ${{ food_item.price }}</p>
+    <p><strong>Service Charge:</strong> ${{ service_charge }}</p>
+    <h3>Total Amount: ${{ total_amount }}</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="address">Enter Delivery Address:</label>
+        <input type="text" name="address" id="address" required>
+        <br><br>
+        <button type="submit" style="background-color: orange; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; box-shadow: 0 2px 5px rgba(255, 165, 0, 0.5); transition: background-color 0.3s ease;">
+            Finish
+        </button>
+    </form>
+
+    <p style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'index' %}" style="color: orange; text-decoration: none; font-size: 16px; font-weight: bold;">
+            Back to Home
+        </a>
+    </p>
+    
+    
+</body>
+</html>
+{% endblock %}

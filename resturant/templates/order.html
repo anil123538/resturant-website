@@ -1,5 +1,5 @@
-{% extends 'base.html'%}
-{% block content%}
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,19 +9,17 @@
     <title>Order Food</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
-       
-            /* Center the header and make it smaller */
-            h1 {
-                text-align: center;
-                font-size: 24px; /* Smaller font size */
-                font-weight: normal; /* Optional */
-                margin-bottom: 20px; /* Optional space below the header */
-            }
+        /* Center the header and make it smaller */
+        h1 {
+            text-align: center;
+            font-size: 24px; /* Smaller font size */
+            font-weight: normal; /* Optional */
+            margin-bottom: 20px; /* Optional space below the header */
+        }
         /* Add space for header */
         body {
             padding-top: 100px;  /* Adjust based on header height */
         }
-
         /* Layout for food items in 4 columns */
         .food-list {
             display: grid;
@@ -29,7 +27,6 @@
             gap: 20px;  /* Space between items */
             margin-top: 20px;
         }
-
         .food-item {
             text-align: center;
             padding: 15px;
@@ -37,14 +34,12 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
         .food-image {
             width: 100%;
             height: auto;
             object-fit: cover;
             border-radius: 8px;  /* Optional: Adds rounded corners */
         }
-
         button {
             background-color: #007bff;
             color: white;
@@ -57,18 +52,15 @@
             box-shadow: 0 2px 5px rgba(0, 123, 255, 0.5);
             transition: background-color 0.3s ease;
         }
-
         button:hover {
             background-color: #0056b3;  /* Darker blue on hover */
         }
-
         /* Responsive Design for Smaller Screens */
         @media (max-width: 768px) {
             .food-list {
                 grid-template-columns: repeat(2, 1fr);  /* 2 columns on smaller screens */
             }
         }
-
         @media (max-width: 480px) {
             .food-list {
                 grid-template-columns: 1fr;  /* 1 column on very small screens */
@@ -85,9 +77,9 @@
             <h3>{{ food.name }}</h3>
             <p>{{ food.description }}</p>
             <p>Price: ${{ food.price }}</p>
-            <button onclick="orderFood('{{ food.id }}')">
-                Order Now
-            </button>
+            <a href="{% url 'bill' food.id %}">
+                <button>Order Now</button>
+            </a>
         </div>
         {% endfor %}
     </div>
@@ -100,4 +92,4 @@
     </script>
 </body>
 </html>
-{% endblock%}
+{% endblock %}

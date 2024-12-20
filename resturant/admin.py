@@ -2,7 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import FoodItem
+from .models import FoodItem,Order
+
+
 
 @admin.register(FoodItem)
 class FoodItemAdmin(admin.ModelAdmin):

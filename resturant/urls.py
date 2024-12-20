@@ -11,5 +11,6 @@ urlpatterns = [
      
      path('',views.register,name='signup'),
      path('order/', views.order_view, name='order'),
+     path('order/<int:food_id>/', views.bill_view, name='bill'),
 
 ]

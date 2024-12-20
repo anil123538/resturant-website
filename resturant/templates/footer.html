@@ -1,3 +1,162 @@
+
+<style>
+  /* Specific style for the Message button */
+  .message-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff6600;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+  }
+
+  .message-btn:hover {
+      background-color: #ff6600;
+  }
+
+  /* Specific style for the Message Popup (Chat Box) */
+  .chat-popup {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      overflow: hidden;
+      border: 1px solid #ccc;
+  }
+
+  .chat-header {
+      background-color: #ff6600;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+  }
+
+  .chat-body {
+      padding: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+      background-color: #f9f9f9;  /* Add a light background color */
+      color: #333;  /* Ensure the text color is visible */
+  }
+
+  .chat-footer {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+  }
+
+  .chat-footer input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 10px;
+  }
+
+  .chat-footer button {
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  .chat-footer button:hover {
+      background-color: #ff6600;
+  }
+
+  .close-chat {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+
+<!-- Your other page content -->
+
+<!-- Message Button (appears at the bottom of the screen) -->
+<a href="#menu" class="message-btn" id="messageButton">Message</a> <!-- This is the message button -->
+
+<!-- Chat Popup -->
+<div id="chatPopup" class="chat-popup">
+  <div class="chat-header">
+      Chat Bot
+      <span id="closeChat" class="close-chat">&times;</span>  <!-- Close button -->
+  </div>
+  <div class="chat-body" id="chatBody">
+      <p><strong>Anil:</strong> Hi! How can I help you?</p>  <!-- Bot's greeting message -->
+  </div>
+  <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Type your message...">  <!-- User input -->
+      <button id="sendButton">Send</button>  <!-- Send button -->
+  </div>
+</div>
+
+<script>
+  // JavaScript to handle popup and message logic
+  const messageButton = document.getElementById('messageButton');  // The message button
+  const chatPopup = document.getElementById('chatPopup');  // The chat popup
+  const closeChat = document.getElementById('closeChat');  // Close button in the popup
+  const sendButton = document.getElementById('sendButton');  // Send button in the popup
+  const userInput = document.getElementById('userInput');  // Text input in the popup
+  const chatBody = document.getElementById('chatBody');  // Chat body where messages appear
+
+  // Open the chat popup when the message button is clicked
+  messageButton.addEventListener('click', (e) => {
+      e.preventDefault();  // Prevent default anchor behavior
+      chatPopup.style.display = 'block';  // Show the chat popup
+  });
+
+  // Close the chat popup when the close button is clicked
+  closeChat.addEventListener('click', () => {
+      chatPopup.style.display = 'none';  // Hide the chat popup
+  });
+
+  // Send message functionality
+  sendButton.addEventListener('click', () => {
+      const userMessage = userInput.value.trim();
+      if (userMessage) {
+          // Display user message
+          const userMsgElement = document.createElement('p');
+          userMsgElement.innerHTML = `<strong>You:</strong> ${userMessage}`;
+          chatBody.appendChild(userMsgElement);
+
+          // Simulate bot reply
+          const botReply = document.createElement('p');
+          botReply.innerHTML = `<strong>Anil:</strong> Thanks for your message!`;
+          chatBody.appendChild(botReply);
+
+          // Scroll to the bottom of the chat
+          chatBody.scrollTop = chatBody.scrollHeight;
+
+          // Clear input field
+          userInput.value = '';
+      }
+  });
+</script>
 </main>
 
 <footer id="footer" class="footer">
